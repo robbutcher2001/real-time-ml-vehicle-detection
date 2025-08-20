@@ -1,6 +1,8 @@
 from ultralytics import YOLO
 from rtsp_stream import get_frame
 
+MODEL = 'models/yolo11x.pt'
+
 def isIntersectingKitchen(x, y):
     x1 = 1550 #top-left
     y1 = 650 #top-left
@@ -25,7 +27,7 @@ def car_space_inference():
     kitchen_occupied = False
     frontdoor_occupied = False
 
-    model = YOLO("yolo11x.pt")
+    model = YOLO(MODEL)
     results = model(get_frame(), device="mps", verbose=False)
 
     for result in results:
