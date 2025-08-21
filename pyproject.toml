@@ -10,10 +10,11 @@ requires-python = ">=3.12"
 dependencies = [
     "ultralytics (>=8.3.182,<9.0.0)",
     "flask (>=3.1.2,<4.0.0)",
+    "gunicorn (>=23.0.0,<24.0.0)",
 ]
 
 [tool.poetry]
-package-mode = false
+packages = [{ include = "rtvd", from = "src" }]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

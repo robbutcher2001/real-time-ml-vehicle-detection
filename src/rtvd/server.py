@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from inference import car_space_inference
+from .inference import car_space_inference
 import threading
 import queue
 import time
@@ -35,8 +35,7 @@ def inference():
     print(f"Inference {id} queued, queue size: {queue_size}")
     return jsonify({"queued": id, "queue_position": queue_size})
 
-if __name__ == "__main__":
-    threading.Thread(target=worker, daemon=True).start()
-    app.run(host="0.0.0.0", port=8000)
+threading.Thread(target=worker, daemon=True).start()
 
-# need to run from terminal with: gunicorn -w 4 -b 0.0.0.0:8000 app:app
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)

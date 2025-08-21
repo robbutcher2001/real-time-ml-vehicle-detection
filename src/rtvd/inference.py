@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-from rtsp_stream import get_frame
+from .rtsp_stream import get_frame
 
 MODEL = 'models/yolo11x.pt'
 

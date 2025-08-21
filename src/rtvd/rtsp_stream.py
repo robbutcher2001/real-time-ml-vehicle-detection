@@ -4,7 +4,7 @@ import numpy as np
 ffmpeg_command = [
     'ffmpeg',
     '-rtsp_transport', 'tcp',
-    '-i', '<camera_rtsp_url>', 
+    '-i', '<camera_rtsp_url>',
     '-frames', '1',
     '-f', 'rawvideo',
     '-pix_fmt', 'bgr24',
