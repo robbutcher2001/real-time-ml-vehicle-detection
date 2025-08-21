@@ -30,8 +30,8 @@ def worker():
 @app.post("/inference")
 def inference():
     id = str(uuid.uuid4())
-    queue_size = inference_queue.qsize() + 1
     inference_queue.put({ 'id': id })
+    queue_size = inference_queue.qsize()
     print(f"Inference {id} queued, queue size: {queue_size}")
     return jsonify({"queued": id, "queue_position": queue_size})
 
