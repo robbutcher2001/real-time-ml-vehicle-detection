@@ -9,5 +9,4 @@ Using real-time RTSP stream and machine learning (specifically computer vision) 
 
 ## prod
 
-- `poetry config virtualenvs.create false && poetry install`
-- `poetry run gunicorn --bind 0.0.0.0:8000 rtvd.server:app`
+Build and run in detached mode with: `docker compose up --build -d`.
