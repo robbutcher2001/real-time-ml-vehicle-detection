@@ -1,10 +1,14 @@
+import os
 import subprocess
 import numpy as np
+
+RTSP_CONTROLLER_URL = os.environ['RTSP_CONTROLLER_URL']
+RTSP_ID = os.environ['RTSP_ID']
 
 ffmpeg_command = [
     'ffmpeg',
     '-rtsp_transport', 'tcp',
-    '-i', '<camera_rtsp_url>',
+    '-i', f'{RTSP_CONTROLLER_URL}/{RTSP_ID}', 
     '-frames', '1',
     '-f', 'rawvideo',
     '-pix_fmt', 'bgr24',

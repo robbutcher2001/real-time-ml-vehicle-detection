@@ -1,0 +1,9 @@
+services:
+  server:
+    build:
+      context: .
+    environment:
+      RTSP_CONTROLLER_URL: rtsp://192.168.1.1:7447
+      RTSP_ID: dXJ9nGkqPmge2RKW
+    ports:
+      - 6000:6000
