@@ -15,7 +15,7 @@ def process_task(task):
     print(f"Task {task['id']} completed")
 
 def worker():
-    print("Worker started, waiting for tasks.. bahhhhhh")
+    print("Worker started, waiting for tasks..")
     while True:
         try:
             process_task(task_queue.get())
