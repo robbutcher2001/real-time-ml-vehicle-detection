@@ -2,9 +2,7 @@
   "name": "real-time-ml-vehicle-detection-api",
   "version": "0.1.0",
   "main": "middleware.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "type": "module",
   "author": "Rob Butcher",
   "license": "ISC",
   "dependencies": {
