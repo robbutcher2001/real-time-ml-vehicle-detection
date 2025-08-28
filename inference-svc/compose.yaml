@@ -5,5 +5,14 @@ services:
     environment:
       RTSP_CONTROLLER_URL: rtsp://192.168.1.1:7447
       RTSP_ID: dXJ9nGkqPmge2RKW
+    secrets:
+      - edge_config_id
+      - edge_access_token
     ports:
       - 9000:9000
+
+secrets:
+  edge_config_id:
+    file: creds/edge_config_id
+  edge_access_token:
+    file: creds/edge_access_token

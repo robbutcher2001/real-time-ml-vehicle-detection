@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 from .rtsp_stream import get_frame
+from .status_store import set_status
 import logging
 
 MODEL = 'models/yolo11x.pt'
@@ -42,8 +43,4 @@ def car_space_inference():
             if isIntersectingFrontdoor(x, y):
                 frontdoor_occupied = True
     
-    logging.info("Kitchen space is occupied" if kitchen_occupied else "Kitchen space is free")
-    logging.info("Frontdoor space is occupied" if frontdoor_occupied else "Frontdoor space is free")
-    # Upload to cloud storage here
-    # Use Python requets to PATCH straight to Vercel Edge Config.
-    # Only PATCH if state has changed.
+    set_status(kitchen_occupied, frontdoor_occupied)

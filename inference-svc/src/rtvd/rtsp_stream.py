@@ -2,8 +2,8 @@ import os
 import subprocess
 import numpy as np
 
-RTSP_CONTROLLER_URL = os.environ['RTSP_CONTROLLER_URL']
-RTSP_ID = os.environ['RTSP_ID']
+RTSP_CONTROLLER_URL = os.environ.get('RTSP_CONTROLLER_URL')
+RTSP_ID = os.environ.get('RTSP_ID')
 
 ffmpeg_command = [
     'ffmpeg',
