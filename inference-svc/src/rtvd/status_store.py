@@ -1,10 +1,10 @@
 import requests
 
 with open("/run/secrets/edge_config_id", "r") as f:
-    EDGE_CONFIG_ID = f.read()
+    EDGE_CONFIG_ID = f.read().replace("\n", "")
 
 with open("/run/secrets/edge_access_token", "r") as f:
-    EDGE_ACCESS_TOKEN = f.read()
+    EDGE_ACCESS_TOKEN = f.read().replace("\n", "")
 
 kitchen_occupied: bool = None
 frontdoor_occupied: bool = None
