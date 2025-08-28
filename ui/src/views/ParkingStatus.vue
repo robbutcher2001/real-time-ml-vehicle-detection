@@ -30,11 +30,13 @@ onMounted(() => {
     <div class="spaces">
       <div>
         <div>Kitchen space</div>
-        <div>{{ status?.spaces.kitchen_occupied ? 'Occupied' : 'Free' }}</div>
+        <div v-if="status">{{ status.spaces.kitchen_occupied ? 'Occupied' : 'Free' }}</div>
+        <div v-else>-</div>
       </div>
       <div>
         <div>Front door space</div>
-        <div>{{ status?.spaces.frontdoor_occupied ? 'Occupied' : 'Free' }}</div>
+        <div v-if="status">{{ status?.spaces.frontdoor_occupied ? 'Occupied' : 'Free' }}</div>
+        <div v-else>-</div>
       </div>
     </div>
 
