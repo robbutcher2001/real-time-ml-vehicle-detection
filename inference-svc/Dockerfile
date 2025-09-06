@@ -17,4 +17,4 @@ COPY . .
 
 RUN poetry install --only main
 
-CMD ["gunicorn", "--bind", "0.0.0.0:9000", "rtvd.server:app"]
+CMD ["gunicorn", "--config", "gunicorn.conf.py", "rtvd.server:app"]
