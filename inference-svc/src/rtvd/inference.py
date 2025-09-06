@@ -1,6 +1,9 @@
 from ultralytics import YOLO
 from .rtsp_stream import get_frame
 from .status_store import set_status
+from .logging_config import get_logger
+
+logger = get_logger(__name__)
 
 MODEL = 'models/yolo11x.pt'
 
@@ -28,18 +31,26 @@ def car_space_inference():
     kitchen_occupied = False
     frontdoor_occupied = False
 
-    model = YOLO(MODEL)
-    results = model(get_frame(), device="mps", verbose=False)
+    try:
+        frame = get_frame()
+        if frame is None:
+            logger.warning("Could not get frame from RTSP stream, skipping inference")
+            return
+        
+        model = YOLO(MODEL)
+        results = model(frame, device="mps", verbose=False)
 
-    for result in results:
-        boxes = result.boxes
-        xywh = boxes.xywh
-        for detection in xywh:
-            x = int(detection[0].tolist()) #TODO: check tolist()
-            y = int(detection[1].tolist())
-            if isIntersectingKitchen(x, y):
-                kitchen_occupied = True
-            if isIntersectingFrontdoor(x, y):
-                frontdoor_occupied = True
-    
-    set_status(kitchen_occupied, frontdoor_occupied)
+        for result in results:
+            boxes = result.boxes
+            xywh = boxes.xywh
+            for detection in xywh:
+                x = int(detection[0].tolist()) #TODO: check tolist()
+                y = int(detection[1].tolist())
+                if isIntersectingKitchen(x, y):
+                    kitchen_occupied = True
+                if isIntersectingFrontdoor(x, y):
+                    frontdoor_occupied = True
+        
+        set_status(kitchen_occupied, frontdoor_occupied)
+    except Exception as e:
+        logger.error(f"Error in car_space_inference: {e}")
