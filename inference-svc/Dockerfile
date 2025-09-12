@@ -2,6 +2,7 @@ FROM python:3.11-slim-bookworm
 
 ENV PYTHONUNBUFFERED=1
 ENV POETRY_VIRTUALENVS_CREATE=false
+ENV TZ=Europe/London
 
 WORKDIR /app
 
