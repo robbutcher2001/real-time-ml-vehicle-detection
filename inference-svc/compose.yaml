@@ -5,9 +5,13 @@ services:
     environment:
       RTSP_CONTROLLER_URL: rtsp://192.168.1.1:7447
       RTSP_ID: dXJ9nGkqPmge2RKW
+      NOTIFICATION_HOOK_URL: https://192.168.1.1
+      NOTIFICATION_OCCUPIED_HOOK_ID: 68299b6e-db58-4ef6-850e-b060a467328c
+      NOTIFICATION_VACANT_HOOK_ID: 274e0e1f-bc26-497f-9440-a419d008d935
     secrets:
       - edge_config_id
       - edge_access_token
+      - notification_hook_key
     ports:
       - 9000:9000
 
@@ -16,3 +20,5 @@ secrets:
     file: creds/edge_config_id
   edge_access_token:
     file: creds/edge_access_token
+  notification_hook_key:
+    file: creds/notification_hook_key

@@ -210,4 +210,5 @@ node_modules
 models
 inference-svc/creds/edge_config_id
 inference-svc/creds/edge_access_token
+inference-svc/creds/notification_hook_key
 .DS_Store

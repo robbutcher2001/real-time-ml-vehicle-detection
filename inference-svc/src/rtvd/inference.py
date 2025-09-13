@@ -44,8 +44,8 @@ def car_space_inference():
             boxes = result.boxes
             xywh = boxes.xywh
             for detection in xywh:
-                x = int(detection[0].tolist()) #TODO: check tolist()
-                y = int(detection[1].tolist())
+                x = int(detection[0].item())
+                y = int(detection[1].item())
                 if isIntersectingKitchen(x, y):
                     kitchen_occupied = True
                 if isIntersectingFrontdoor(x, y):
