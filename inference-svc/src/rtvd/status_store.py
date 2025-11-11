@@ -77,6 +77,8 @@ def set_status(kitchen_status: bool, frontdoor_status: bool):
         
         if (kitchen_status == False or frontdoor_status == False):
             logger.info("Visitor space is free, sending notification..")
+            logger.info(f"DEBUG: kitchen_status: {kitchen_status}, frontdoor_status: {frontdoor_status}")
+            logger.info(f"DEBUG: kitchen_occupied: {kitchen_occupied}, frontdoor_occupied: {frontdoor_occupied}")
             send_notification('empty_space')
 
     kitchen_occupied = kitchen_status
