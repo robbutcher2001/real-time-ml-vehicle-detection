@@ -1,0 +1,40 @@
+.dev {
+  /* box-shadow: inset 0px 0px 0px 4px red; */
+}
+
+h1 {
+  margin: 0;
+}
+
+.page {
+  min-height: 100%;
+  min-width: 350px;
+  max-width: 1024px;
+  padding: 1rem;
+}
+
+.spaces {
+  display: flex;
+  column-gap: 3rem;
+  height: 200px;
+  padding: 1rem;
+}
+
+.space {
+  flex-basis: 50%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%),
+    rgba(255, 255, 255, 0.02);
+  border-color: #22c55e;
+  box-shadow:
+    0 0 40px rgba(34, 197, 94, 0.3),
+    0 8px 32px rgba(34, 197, 94, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}

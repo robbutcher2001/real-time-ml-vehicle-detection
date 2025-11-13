@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ParkingStatus from './views/ParkingStatus.vue'
+import ParkingView from './views/ParkingView.vue'
 </script>
 
 <template>
-  <ParkingStatus />
+  <ParkingView />
 </template>
