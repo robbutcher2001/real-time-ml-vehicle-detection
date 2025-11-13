@@ -21,6 +21,7 @@ with open("/run/secrets/notification_hook_key", "r") as f:
 
 kitchen_occupied: bool = None
 frontdoor_occupied: bool = None
+last_notification_sent: Literal["full", "empty_space"] | None = None
 logger = get_logger(__name__)
 
 def update_storage(current_kitchen_status: bool, current_frontdoor_status: bool):
@@ -51,6 +52,12 @@ def update_storage(current_kitchen_status: bool, current_frontdoor_status: bool)
         logger.error("Error updating edge config")
 
 def send_notification(status: Literal["full", "empty_space"]):
+    global last_notification_sent
+    
+    if status == last_notification_sent:
+        logger.info(f"Notification of {'car park full' if status == 'full' else 'vacant space'} already sent, aborting..")
+        return
+    
     endpoint_id = NOTIFICATION_OCCUPIED_HOOK_ID if status == 'full' else NOTIFICATION_VACANT_HOOK_ID
     url = f'{NOTIFICATION_HOOK_URL}/proxy/protect/integration/v1/alarm-manager/webhook/{endpoint_id}'
     headers = {
@@ -59,6 +66,7 @@ def send_notification(status: Literal["full", "empty_space"]):
     response = requests.post(url, headers=headers, verify=False)
 
     if (response.status_code == 204):
+        last_notification_sent = status
         logger.info("Notification sent")
     else:
         logger.error("Error sending notification")
