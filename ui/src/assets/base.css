@@ -1,5 +1,5 @@
 html {
-  height: 100vh;
+  min-width: 350px;
   font-family:
     'IBM Plex Sans',
     -apple-system,
@@ -15,13 +15,13 @@ html {
 }
 
 body {
-  height: 100%;
   margin: 0;
 }
 
 #app {
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
   background-color: hsl(210, 14%, 7%);
   color: hsl(215, 15%, 75%);
-  padding: 1rem;
 }
