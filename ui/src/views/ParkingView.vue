@@ -19,18 +19,18 @@ const getStatus = async () => {
   loading.value = false
 }
 
-const frontdoor = computed(() => ({
-  loading: loading.value,
-  occupied: !loading.value && status.value?.spaces.frontdoor_occupied,
-  vacant: !loading.value && !status.value?.spaces.frontdoor_occupied,
-  text: !loading.value && status.value?.spaces.frontdoor_occupied ? 'Occupied' : 'Vacant',
-}))
-
 const kitchen = computed(() => ({
   loading: loading.value,
   occupied: !loading.value && status.value?.spaces.kitchen_occupied,
   vacant: !loading.value && !status.value?.spaces.kitchen_occupied,
   text: !loading.value && status.value?.spaces.kitchen_occupied ? 'Occupied' : 'Vacant',
+}))
+
+const frontdoor = computed(() => ({
+  loading: loading.value,
+  occupied: !loading.value && status.value?.spaces.frontdoor_occupied,
+  vacant: !loading.value && !status.value?.spaces.frontdoor_occupied,
+  text: !loading.value && status.value?.spaces.frontdoor_occupied ? 'Occupied' : 'Vacant',
 }))
 
 onMounted(() => {
@@ -44,27 +44,6 @@ onMounted(() => {
     <div role="doc-subtitle">Carriage Walk</div>
     <hr />
     <div class="spaces">
-      <div
-        class="space"
-        :class="{
-          occupied: frontdoor.occupied,
-          vacant: frontdoor.vacant,
-        }"
-      >
-        <h2>Front Door</h2>
-        <span>
-          <img
-            v-if="frontdoor.loading"
-            width="50"
-            height="50"
-            src="/img/spinner.svg"
-            alt="Loading front door"
-          />
-          <div v-else class="text">
-            {{ frontdoor.text }}
-          </div>
-        </span>
-      </div>
       <div
         class="space"
         :class="{
@@ -83,6 +62,27 @@ onMounted(() => {
           />
           <div v-else class="text">
             {{ kitchen.text }}
+          </div>
+        </span>
+      </div>
+      <div
+        class="space"
+        :class="{
+          occupied: frontdoor.occupied,
+          vacant: frontdoor.vacant,
+        }"
+      >
+        <h2>Front Door</h2>
+        <span>
+          <img
+            v-if="frontdoor.loading"
+            width="50"
+            height="50"
+            src="/img/spinner.svg"
+            alt="Loading front door"
+          />
+          <div v-else class="text">
+            {{ frontdoor.text }}
           </div>
         </span>
       </div>
